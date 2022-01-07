@@ -16,29 +16,29 @@ const Button = styled.button`
 `
 
 const CheckoutButton = ({ formData }) => {
-    const items = [];
+    const auxCart = [];
     const { cart, totalPrice, clearCart } = useContext(CartContext)
 
     const createOrder = e => {
         e.preventDefault();
         console.log(cart);
 
-        cart.map((item) => {
-            const i = {
-                producto: item.product,
-                id: item.id,
-                cantidad: item.amount,
-                precio: item.price,
-                color: item.color,
-                medidas: JSON.stringify(item.measures)
+        cart.map((cartItem) => {
+            const newItem = {};
+            let keys = Object.keys(cartItem);
+            for (let i = 0; i < keys.length; i++) {
+                let key = keys[i];
+                if (key !== 'images' && cartItem[key] !== undefined) {
+                    newItem[key] = cartItem[key]
+                }
             }
-            items.push(i)
+            auxCart.push(newItem)
         })
 
         const ref = collection(db, "orders")
         const order = {
             comprador: { ...formData },
-            orden: { ...items },
+            orden: [...auxCart],
             total: totalPrice
         }
         addDoc(ref, order).then(res => {
