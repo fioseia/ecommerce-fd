@@ -9,6 +9,7 @@ import { ProductsContextProvider } from './context/ProductsContext';
 import Home from './screens/Home/Home';
 import Product from './screens/Product/Product';
 import Products from './screens/Products/Products';
+import OrderData from './screens/OrderData/OrderData';
 
 
 function App() {
@@ -25,6 +26,7 @@ function App() {
                         <Route exact path="/categoria/:categId" element={<Products />} />
                         <Route exact path="/item/:itemId" element={<Product />} />
                         <Route exact path="/cart" element={<Cart />} />
+                        <Route exact path="/order/:orderId" element={<OrderData />} />
                     </Routes>
 
                     <Footer />

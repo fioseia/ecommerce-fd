@@ -1,9 +1,9 @@
 
-import { Badge } from '@material-ui/core';
-import { ExitToAppOutlined, LocalMallOutlined } from '@material-ui/icons';
+import { ExitToAppOutlined } from '@material-ui/icons';
 import { useState } from 'react'
+import CartWidget from '../CartWidget/CartWidget';
 import SideMenu from '../SideMenu/SideMenu';
-import { Center, Container, Left, Logo, Menu, Right, Wrapper, Log, Cart } from './NavBarStyle'
+import { Center, Container, Left, Logo, Menu, Right, Wrapper, Log } from './NavBarStyle'
 
 const NavBar = () => {
     const [sideMenu, setSideMenu] = useState(false);
@@ -25,11 +25,7 @@ const NavBar = () => {
                 </Center>
                 <Right>
                     <Log to={`/login`}><h2>INGRESA</h2> <ExitToAppOutlined /></Log>
-                    <Cart to={`/cart`}>
-                        <Badge badgeContent={5}>
-                            <LocalMallOutlined />
-                        </Badge>
-                    </Cart>
+                    <CartWidget />
                 </Right>
             </Wrapper>
         </Container>

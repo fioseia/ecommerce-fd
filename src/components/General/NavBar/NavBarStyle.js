@@ -37,7 +37,6 @@ export const Logo = styled(Link)`
     justify-content: center;
     
     h1{
-        //font-family: 'Special Elite', cursive;
         font-size: 40px;
         color: #010101;
         ${mobile({ fontSize: '27px' })}
@@ -73,6 +72,3 @@ export const Log = styled(Link)`
     
 `
 
-export const Cart = styled(Link)`
-    color: #010101;
-`

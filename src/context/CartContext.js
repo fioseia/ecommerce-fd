@@ -31,7 +31,6 @@ const CartContextProvider = ({ children }) => {
             && item.medida_contornodecadera === newItem.medida_contornodecadera
             && item.medida_largototal === newItem.medida_largototal
             && item.medida_altura === newItem.medida_altura));
-        console.log(itemExist);
 
         if (!itemExist) {
             setCart([...cart, {
@@ -51,7 +50,6 @@ const CartContextProvider = ({ children }) => {
             setTotalPrice(totalPrice + (newItem.price * amount));
             setTotalProducts(totalProducts + amount);
         } else {
-            console.log('holaaaaaaaaa');
             const cartAux = cart.map((item) => {
                 if (
                     item.id === newItem.id

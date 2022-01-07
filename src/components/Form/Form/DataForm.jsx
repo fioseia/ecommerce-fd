@@ -49,7 +49,6 @@ const DataForm = () => {
             pais: countryRef.current.value
         })
         setButton(false)
-        console.log(formData)
     }
 
     return (

@@ -1,12 +1,11 @@
 import { DeleteOutlineOutlined } from '@material-ui/icons';
 import React, { useContext, useEffect, useState } from 'react'
-import { CartContext } from '../../context/CartContext';
+import { CartContext } from '../../../context/CartContext';
 import { Button, Details, Image, PriceDetail, Product, ProductColor, ProductDetail, ProductId, ProductPrice, ProductSize, ProductSizeWrapper, ProductTitle } from './CartItemStyle'
 
 const CartItem = ({ item }) => {
     const [keys, setKeys] = useState([])
     const { onRemove } = useContext(CartContext);
-    console.log(item);
 
     useEffect(() => {
         setKeys(Object.keys(item))
@@ -23,7 +22,7 @@ const CartItem = ({ item }) => {
                     <ProductSizeWrapper><b>Medidas: </b>
                         {keys.map((key) => {
                             if (key.includes('medida') && item[key] !== undefined) {
-                                return (<ProductSize>{key.replace(/[('_']+/g, ' ')}: {item[key]}</ProductSize>)
+                                return (<ProductSize key={key}>{key.replace(/[('_']+/g, ' ')}: {item[key]}</ProductSize>)
                             }
                         })}
                     </ProductSizeWrapper>

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { mobile } from '../../styles/responsive'
+import { mobile } from '../../../styles/responsive'
 
 export const Container = styled.div`
     padding: 20px;

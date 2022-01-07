@@ -1,16 +1,14 @@
 import { DeleteOutlineOutlined } from '@material-ui/icons';
 import React, { useContext, useState } from 'react'
-import { CartContext } from '../../context/CartContext';
-import CartItem from '../CartItem/CartItem';
-import Modal from '../General/Modal/Modal';
+import { CartContext } from '../../../context/CartContext';
+import CartItem from '../../Cart/CartItem/CartItem';
+import Modal from '../../General/Modal/Modal';
 import { Bottom, Button, Container, Info, ReturnButton, Summary, SummaryItem, SummaryItemPrice, SummaryItemText, SummaryTitle, Title, Top, TopButton } from "./CartViewStyle"
 
 
 const CartView = () => {
     const [modal, setModal] = useState(false);
     const { cart, totalPrice, clearCart } = useContext(CartContext);
-
-    console.log(cart)
 
     const handlerModal = () => {
         setModal(!modal)

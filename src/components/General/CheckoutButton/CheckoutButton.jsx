@@ -1,8 +1,9 @@
-import { addDoc, collection } from "firebase/firestore"
 import { useContext } from "react"
-import styled from "styled-components"
+import { useNavigate } from "react-router-dom"
+import { addDoc, collection } from "firebase/firestore"
 import { CartContext } from "../../../context/CartContext"
 import { db } from "../../../firebase/firebase"
+import styled from "styled-components"
 
 const Button = styled.button`
     width: 90%;
@@ -18,10 +19,10 @@ const Button = styled.button`
 const CheckoutButton = ({ formData }) => {
     const auxCart = [];
     const { cart, totalPrice, clearCart } = useContext(CartContext)
+    const navigate = useNavigate();
 
     const createOrder = e => {
         e.preventDefault();
-        console.log(cart);
 
         cart.map((cartItem) => {
             const newItem = {};
@@ -41,10 +42,16 @@ const CheckoutButton = ({ formData }) => {
             orden: [...auxCart],
             total: totalPrice
         }
-        addDoc(ref, order).then(res => {
-            alert(`Tu numero de compra es ${res.id}`)
-            clearCart();
-        })
+        addDoc(ref, order)
+            .then(res => {
+                navigate(`/order/${res.id}`)
+                clearCart();
+            })
+            .catch(err => {
+                alert(err.message);
+            })
+
+
     }
 
 
